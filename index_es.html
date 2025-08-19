@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>JCB Agro Comex</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+    }
+
+    /* --- ESTILO DO CABEÇALHO ATUALIZADO --- */
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-logo {
+      height: 60px; /* Altura do logotipo */
+      width: auto;
+    }
+
+    .header-text {
+      flex-grow: 1; /* Faz o texto ocupar o espaço restante */
+      text-align: center;
+    }
+
+    header h1, header p {
+      color: white;
+      margin: 2px 0;
+    }
+    
+    header h1 {
+        font-size: 24px;
+    }
+    
+    header p {
+        font-size: 14px;
+    }
+
+    header p.italic {
+      font-style: italic;
+    }
+
+    /* Seletor de idioma */
+    .language-selector {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .language-selector a {
+      color: white;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .language-selector a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .language-selector a.active {
+      background-color: #27ae60;
+    }
+    /* --- FIM DO ESTILO DO CABEÇALHO --- */
+
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: #34495e;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 8px;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    section {
+      padding: 30px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #2c3e50;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    h3 {
+      color: #27ae60;
+      font-size: 22px;
+      margin-top: 30px;
+    }
+
+    p, ul {
+      font-size: 16px;
+      color: #333;
+    }
+
+    ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-cards {
+      flex: 1;
+      min-width: 300px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1 );
+      text-align: center;
+    }
+
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #27ae60;
+    }
+
+    .card-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: #555;
+    }
+    
+    .process-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .process-item {
+      margin-bottom: 40px;
+    }
+
+    .process-image {
+      width: auto;
+      height: 200px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: block;
+      margin: 0 auto;
+    }
+
+    #contact {
+      padding-top: 20px;
+      padding-bottom: 40px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      background-color: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .contact-column h3 {
+      font-family: 'Montserrat', sans-serif;
+      color: #2c3e50;
+      font-size: 20px;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .contact-item i {
+      font-size: 16px;
+      color: #27ae60;
+      margin-right: 12px;
+      width: 18px;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .contact-item-text strong {
+      display: block;
+      font-weight: 600;
+      font-size: 15px;
+      color: #333;
+    }
+
+    .contact-item-text span {
+      color: #555;
+      line-height: 1.4;
+      font-size: 14px;
+    }
+
+    .export-inquiries {
+      background-color: #f5f7f5;
+      padding: 12px 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+    
+    .export-inquiries p {
+      font-size: 13px !important;
+      line-height: 1.5;
+    }
+
+    .export-inquiries strong {
+      font-family: 'Montserrat', sans-serif;
+      color: #2c3e50;
+      font-size: 15px;
+    }
+
+    .why-us-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .why-us-list li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .why-us-list i {
+      color: #27ae60;
+      margin-right: 10px;
+      margin-top: 5px;
+      font-size: 15px;
+    }
+
+    .why-us-list strong {
+      font-weight: 600;
+      font-size: 15px;
+      color: #333;
+    }
+    
+    .why-us-list span {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    .email-button {
+      display: inline-block;
+      background-color: #1e6a40;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+      font-size: 14px;
+    }
+
+    .email-button:hover {
+      background-color: #27ae60;
+    }
+
+    .email-button i {
+      margin-right: 8px;
+    }
+    
+    footer {
+      background-color: #2c3e50;
+      color: #bdc3c7;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    footer p {
+      color: #bdc3c7;
+      margin: 5px 0;
+    }
+
+    footer p.italic {
+      font-style: italic;
+    }
+
+    @media (max-width: 992px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .about-container, .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .process-grid .process-image-container {
+        order: -1;
+        margin-bottom: 20px;
+      }
+      
+      .process-image {
+        width: 100%;
+        height: auto;
+      }
+      
+      /* Ajuste do cabeçalho para celular */
+      .header-logo {
+        height: 50px; /* Logo um pouco menor no celular */
+      }
+      header h1 {
+        font-size: 18px;
+      }
+      header p {
+        font-size: 12px;
+      }
+
+      /* Ajuste do seletor de idioma para celular */
+      .language-selector {
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO ATUALIZADO COM LOGO E SELETOR DE IDIOMA -->
+  <header>
+    <img src="Fotos Limas/JCBlogo.jpg" alt="JCB Agro Comex Logo" class="header-logo">
+    <div class="header-text">
+      <h1>JCB Agro Comex Ltda</h1>
+      <p class="italic">Gestionado por CQ International Ltda</p>
+      <p>Limas Tahiti premium de la principal región citrícola de Brasil</p>
+    </div>
+    <div class="language-selector">
+      <a href="index.html">EN</a>
+      <a href="index_es.html" class="active">ES</a>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#home">Inicio</a>
+    <a href="#about">Nosotros</a>
+    <a href="#process">Proceso Integrado</a>
+    <a href="#contact">Contacto</a>
+  </nav>
+
+  <section id="home" style="position: relative; height: 100vh; overflow: hidden;">
+    <img src="Fotos Limas/Inicio.jpg" alt="Plantación de Limas" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 1;">
+    <div style="position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; padding: 20px;">
+      <h2 style="color: white; font-size: 48px; font-weight: bold; margin-bottom: 20px; font-family: 'Montserrat', sans-serif;">Bienvenidos a JCB Agro Comex</h2>
+      <p style="color: white; font-size: 24px; font-weight: bold; max-width: 800px;">Entregamos limas Tahiti de calidad excepcional desde granjas sostenibles en el noroeste de São Paulo a los mercados europeos.</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 style="text-align: left;">Nosotros</h2>
+    <div class="about-container">
+      <div class="about-text">
+        <p>JCB Agro Comex Ltda es un exportador líder de limas Tahiti de Brasil, estratégicamente ubicado en la región noroeste del Estado de São Paulo — el corazón de la industria citrícola brasileña. Esta región produce el 60% de la producción total de limas de Brasil, convirtiéndola en una ubicación ideal para operaciones agrícolas sostenibles.</p>
+        <p>La empresa es gestionada por <span class="italic">CQ International Ltda</span> y combina la experiencia agrícola tradicional brasileña con prácticas comerciales internacionales modernas. JCB Agro Comex Ltda ha construido una reputación por entregar limas Tahiti de calidad excepcional a los mercados europeos, donde la demanda de frutas cítricas premium continúa creciendo.</p>
+      </div>
+      <div class="about-cards">
+        <div class="card">
+          <div class="card-icon">🌍</div>
+          <div class="card-title">Mercados Europeos</div>
+          <div class="card-desc">Exportaciones regulares a Europa con certificaciones de calidad.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎖️</div>
+          <div class="card-title">Estándares de Calidad</div>
+          <div class="card-desc">Cumpliendo con los estrictos requisitos de calidad internacional.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🍃</div>
+          <div class="card-title">Prácticas Sostenibles</div>
+          <div class="card-desc">Administración ambiental en todas las operaciones.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">👥</div>
+          <div class="card-title">Equipo Experto</div>
+          <div class="card-desc">Profesionales experimentados en agricultura y exportación.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <h2 style="text-align: left;">Proceso Integrado</h2>
+    <div class="process-grid process-item">
+      <div class="process-text">
+        <h3>Producción</h3>
+        <p>Nuestros huertos ejemplifican la agricultura sostenible moderna, utilizando manejo integrado de plagas, riego de precisión y prácticas de conservación del suelo.</p>
+      </div>
+      <div class="process-image-container">
+        <img src="Fotos Limas/plantacao1.jpg" alt="Huerto sostenible de limas" class="process-image">
+      </div>
+    </div>
+    <div class="process-grid process-item">
+      <div class="process-text">
+        <h3>Casa de Empaque</h3>
+        <p>Nuestra casa de empaque de última generación representa el paso crucial final en la entrega de limas Tahiti premium a los mercados europeos. Esta instalación combina tecnología avanzada con procesos meticulosos de control de calidad.</p>
+      </div>
+      <div class="process-image-container">
+        <img src="Fotos Limas/packingmain.jpg" alt="Casa de empaque de última generación" class="process-image">
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-grid">
+      <div class="contact-column">
+        <h3>Información de Contacto</h3>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div class="contact-item-text">
+            <strong>Oficina Comercial</strong>
+            <span>CQ International Ltda  
+Alameda Santos 734, Suite 83  
+01418-100 São Paulo, SP - Brasil</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone-alt"></i>
+          <div class="contact-item-text">
+            <strong>Teléfono</strong>
+            <span>+55-11-99790-4605</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <div class="contact-item-text">
+            <strong>Email</strong>
+            <span>ceq@cqinternational.com.br</span>
+          </div>
+        </div>
+        <div class="export-inquiries">
+          <strong>Consultas de Exportación</strong>
+          <p style="font-size: 13px; color: #555; margin: 5px 0 0 0;">Para consultas de exportación, incluya información sobre sus requisitos de volumen, horarios de entrega preferidos, especificaciones de calidad y mercados de destino. Podemos proporcionar muestras, certificados de calidad e información detallada del producto.</p>
+        </div>
+      </div>
+      <div class="contact-column">
+        <h3>¿Por qué elegir JCB Agro Comex?</h3>
+        <ul class="why-us-list">
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <div>
+              <strong>Calidad Premium</strong>
+              <span>Limas Tahiti de la principal región citrícola de Brasil</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <div>
+              <strong>Prácticas Sostenibles</strong>
+              <span>Administración ambiental en todas las operaciones</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <div>
+              <strong>Estándares Europeos</strong>
+              <span>Cumpliendo con los estrictos requisitos de calidad internacional</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <div>
+              <strong>Soporte Experto</strong>
+              <span>Equipo multilingüe con asistencia integral de exportación</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <div>
+              <strong>Suministro Confiable</strong>
+              <span>Calidad consistente y horarios de entrega</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <div>
+              <strong>Trazabilidad Completa</strong>
+              <span>Documentación completa desde la granja hasta el destino</span>
+            </div>
+          </li>
+        </ul>
+        <a href="mailto:ceq@cqinternational.com.br" class="email-button">
+          <i class="fas fa-envelope"></i>
+          Contáctanos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 JCB Agro Comex Ltda. Todos los derechos reservados.</p>
+    <p class="italic">Gestionado por CQ International Ltda</p>
+  </footer>
+
+</body>
+</html>
